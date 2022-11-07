@@ -12,7 +12,6 @@ import Home from './components/Home/Home';
 function App() {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
       <Route path='/:a'>
         <Nav />
       </Route>
