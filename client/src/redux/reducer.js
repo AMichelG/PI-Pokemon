@@ -58,7 +58,7 @@ const rootReducer = (state = initialState, action) => {
                 pokemon: action.payload === 'all' ? state.allPokemon : dbPokemon
             }
         case SORT_BY_NAME:
-            let sortByName = action.payload === 'asc' ? state.pokemon.sort((a, b) => {
+            let sortByName = action.payload === '' ? state.pokemon : action.payload === 'asc' ? state.pokemon.sort((a, b) => {
                 if (a.name > b.name) {
                     return 1;
                 }

@@ -1,25 +1,58 @@
 import React from 'react';
 import { typeImages } from '../../assets/typeImages'
+import { Link } from 'react-router-dom';
+
+import styles from './Card.module.css'
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function Card({ name, image, types }) {
-    if (!name || !image || !types) {
-        throw new Error('faltó algo')
+function pkID(id) {
+    if (id.length > 4) {
+        return '#' + id;
+    } else {
+        let num = id.toString()
+        switch (num.length) {
+            case 1:
+                return '#00' + num;
+            case 2:
+                return '#0' + num;
+            case 3:
+                return '#' + num;
+            default:
+                return num;
+        }
     }
+}
+
+function Card({ name, image, types, PokeID }) {
+    if (!name || !image || !types) {
+        throw new Error('Some info is missing')
+    }
+
+    const color = typeImages[types[0].color]
+
     console.log(types)
     return (<>
-        <div>
-            <img src={image} alt={name} />
-            <h3>{capitalize(name)}</h3>
-            <div>
-                <img src={typeImages[types[0]].url} alt={types[0]} />
-                {types.length === 2
-                    ? <img src={typeImages[types[1]].url} alt={types[1]} />
-                    : null
-                }
+        <div className={styles.cardContainer}>
+            <div className={styles.card + ' ' + styles['type' + color]}>
+                <h3 className={styles.cardName}>{capitalize(name)}</h3>
+                <h3 className={styles.cardId}>{pkID(PokeID)}</h3>
+
+                <Link to={`/home/${PokeID}`}>
+                    <img src={image} alt={name} className={styles.cardImg} />
+                </Link>
+
+                <div >
+                    <div className={styles.typesContainer}>
+                        <img src={typeImages[types[0]].url} alt={types[0]} className={styles.logoTypes} />
+                        {types.length === 2
+                            ? <img src={typeImages[types[1]].url} alt={types[1]} className={styles.logoTypes} />
+                            : null
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </>);

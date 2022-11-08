@@ -6,9 +6,10 @@ import { getTypes, getPokemon, filterBySource, filterByType, sortByAtt, clearFil
 
 import Card from '../Card/Card'
 import Loading from '../Loading/Loading'
-import Nav from '../Nav/Nav'
 import Pagination from '../Pagination/Pagination'
 import Searchbar from '../Searchbar/Searchbar';
+
+import styles from './Home.module.css'
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -94,67 +95,78 @@ function Home() {
     console.log(pokemon)
 
     return (<>
-        <div>
-            <h2>Filters</h2>
+        <div className={styles.homeBG}>
+            <div className={styles.filtersContainer}>
+                {/*Ordenamiento alfabetico*/}
+                <div><h3 className={styles.filterNames}>Name:</h3>
+                    <select className={styles.filterSelect} onChange={handleSortByName}>
+                        <option value=''>Sort by Name</option>
+                        <option value='asc'>A - Z</option>
+                        <option value='desc'>Z - A</option>
+                    </select>
+                </div>
 
-            {/*Ordenamiento alfabetico*/}
-            <select onChange={handleSortByName}>
-                <option value=''>Sort by Name</option>
-                <option value='asc'>A - Z</option>
-                <option value='desc'>Z - A</option>
-            </select>
+                {/*Filtro por tipo*/}
+                <div><h3 className={styles.filterNames}>Type:</h3>
+                    <select className={styles.filterSelect} onChange={handleFilterByType}>
+                        <option value='all'>Type</option>
+                        {types?.map(type => (
+                            <option key={type.id} value={type.name}>{capitalize(type.name)}</option>
+                        ))}
+                    </select>
+                </div>
 
-            {/*Filtro por tipo*/}
-            <select onChange={handleFilterByType}>
-                <option value='all'>Type</option>
-                {types?.map(type => (
-                    <option key={type.id} value={type.name}>{capitalize(type.name)}</option>
-                ))}
-            </select>
+                {/*Filtro por lugar de almacenamiento*/}
+                <div><h3 className={styles.filterNames}>Storage:</h3>
+                    <select className={styles.filterSelect} onChange={handleFilterBySource}>
+                        <option value='all'>All Pokemon</option>
+                        <option value='db'>DB pokemon</option>
+                        <option value='api'>API Pokemon</option>
+                    </select>
+                </div>
 
-            {/*Filtro por lugar de almacenamiento*/}
-            <select onChange={handleFilterBySource}>
-                <option value='all'>All Pokemon</option>
-                <option value='db'>DB pokemon</option>
-                <option value='api'>API Pokemon</option>
-            </select>
+                {/*Ordenamiento por ataque*/}
+                <div><h3 className={styles.filterNames}>Attack:</h3>
+                    <select className={styles.filterSelect} onChange={handleSortByAtt}>
+                        <option value=''>Sort by Attack</option>
+                        <option value='lowest'>Lowest Attack</option>
+                        <option value='highest'>Highest Attack</option>
+                    </select>
+                </div>
 
-            {/*Ordenamiento por ataque*/}
-            <select onChange={handleSortByAtt}>
-                <option value=''>Sort by Attack</option>
-                <option value='lowest'>Lowest Attack</option>
-                <option value='highest'>Highest Attack</option>
-            </select>
+                <div><h3 className={styles.filterNames}> </h3>
+                    <br></br>
+                    <Searchbar />
+                </div>
 
-            <Searchbar />
+                <button className={styles.clearBtn} onClick={handleClick}>Clear</button>
+            </div>
+            <div className={styles.cardGrid}>
+                {
+                    loading ? (<Loading />)
+                        : !pokemon.length ? (<h2>Not Found</h2>)
+                            : currentItems?.map(item => {
+                                return (
+                                    <div key={item.id}>
 
-            <button onClick={handleClick}>Clear</button>
-        </div>
-        <div>
+                                        <Card name={item.name} image={item.image} types={item.types} PokeID={item.id} />
+
+                                    </div>
+                                )
+                            })
+                }
+            </div>
             {
                 loading ? (<Loading />)
-                    : !pokemon.length ? (<h2>Not Found</h2>)
-                        : currentItems?.map(item => {
-                            return (
-                                <div key={item.id}>
-                                    <Link to={`/home/${item.id}`}>
-                                        <Card name={item.name} image={item.image} types={item.types} PokeID={item.id} />
-                                    </Link>
-                                </div>
-                            )
-                        })
+                    : <div>
+                        {
+                            pokemon.length >= 12 ?
+                                <Pagination itemsPerPage={itemsPerPage} totalItems={pokemon.length} page={page} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                                : null
+                        }
+                    </div>
             }
         </div>
-        {
-            loading ? (<Loading />)
-                : <div>
-                    {
-                        pokemon.length >= 12 ?
-                            <Pagination itemsPerPage={itemsPerPage} totalItems={pokemon.length} page={page} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-                            : null
-                    }
-                </div>
-        }
     </>);
 }
 

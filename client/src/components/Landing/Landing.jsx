@@ -9,7 +9,7 @@ const Landing = () => {
     return (
         <div className={styles.landingImg}>
             <Link to='/home'>
-                <button>ENTER</button>
+                <button className={styles.enterBtn}>ENTER</button>
             </Link>
         </div>
     );

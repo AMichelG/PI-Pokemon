@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.navbar {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px 5%;
+    background-color: #24252A;
+
+    display: flex;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+.navLinks {
+    font-family: 'Righteous', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    color: gainsboro;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.navLinks:hover {
+    color: lightskyblue
+}

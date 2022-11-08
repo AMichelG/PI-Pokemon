@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .landingImg {
     display: flex;
-    background: url('https://wallpaper.dog/large/10810024.png');
+    background: url('../../assets/landing_image.png');
     background-size: cover;
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
@@ -8,4 +10,38 @@
     height: 100vh;
     width: 100%;
     border-style: none;
+}
+
+.enterBtn {
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color: #768d87;
+    border-radius: 50px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    color: gainsboro;
+    font-family: 'Righteous', cursive;
+    font-size: 45px;
+    font-weight: 400;
+    padding: 11px 23px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2b665e;
+
+    transition: all 0.5s ease 0s;
+
+    position: relative;
+    left: 200%;
+    top: 15%;
+}
+
+.enterBtn:hover {
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
+    color: lightskyblue
+}
+
+.enterBtn:active {
+    position: relative;
+    top: 15.1%;
 }

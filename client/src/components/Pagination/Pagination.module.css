@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.pagUlCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+}
+
+.pagBtn {
+    font-family: 'Righteous', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    border-radius: 70%;
+    height: 50px;
+    width: 50px;
+
+    animation-name: appear;
+    animation-duration: 1s;
+    transition: .5s;
+}
+
+.pagBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 1px skyblue;
+}
+
+.otherBtn {}
+
+.currentBtn {}
+
+.disabledBtn {
+    font-family: 'Righteous', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    border-radius: 70%;
+    height: 50px;
+    width: 50px;
+}

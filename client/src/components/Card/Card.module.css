@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    position: fixed;
+    overflow: hidden;
+    height: 260px;
+    width: 210px;
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/176622e8-bf4c-4d60-9a64-b75cff245c16/d3n22fk-ca665f8a-9aa5-4508-9132-a0cc7b06c3b8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzE3NjYyMmU4LWJmNGMtNGQ2MC05YTY0LWI3NWNmZjI0NWMxNlwvZDNuMjJmay1jYTY2NWY4YS05YWE1LTQ1MDgtOTEzMi1hMGNjN2IwNmMzYjgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.eA_wRwNxQiV4TEmP_yY1ZEauNMCFMTml6wDnx5BdmzQ);
+    /* background-color: var(--bg-color); */
+    /* background: linear-gradient(to bottom, rgba(255, 136, 0, 0.904), rgb(246, 255, 0)); */
+    box-shadow: 0 0 .1rem rgb(0, 0, 0);
+    border-radius: 2px;
+    opacity: 1;
+    margin: 5px;
+    /* margin-top: 5px; */
+}
+
+.cardContainer {
+    margin: auto;
+    background-color: gold;
+    height: 270px;
+    width: 220px;
+    /* margin: 10%; */
+    border-radius: 5px;
+    box-shadow: 0 0 .9rem rgb(0, 0, 0);
+
+    animation-name: appear;
+    animation-duration: 1s;
+    transition: .5s;
+}
+
+element {
+    --bg-color: rgb(0, 255, 0)
+}
+
+.typegreen {
+    color: green;
+    background-color: green;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: .5;
+}
+
+.cardContainer:hover {
+    box-shadow: 0 0 10px 1px skyblue;
+    transform: scale(1.075);
+}
+
+.cardName {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2em;
+    color: black;
+    /* filter: brightness(150%); */
+    /* text-shadow: 3px 3px 3px #000000; */
+    letter-spacing: .1rem;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.cardId {
+    font-family: 'Righteous', cursive;
+    font-weight: 400;
+    font-size: 1em;
+    color: black;
+    /* filter: brightness(150%); */
+    /* text-shadow: 3px 3px 3px #000000; */
+    /* letter-spacing: .1rem; */
+    margin-top: -20px;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.cardTypes {
+    font-size: .4em;
+    color: #EFFCD5;
+    letter-spacing: .2rem;
+    /* margin-top: 5px; */
+}
+
+.cardImg {
+    margin-top: 5px;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    /* border-radius: 30px; */
+}
+
+.card .typesContainer img {
+    margin: 10px;
+    height: 35px;
+    width: 35px;
+}
+
+.typesContainer {
+    margin: 5px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

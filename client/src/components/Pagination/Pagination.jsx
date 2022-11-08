@@ -1,5 +1,7 @@
 import { React, useState } from 'react'
 
+import styles from './Pagination.module.css'
+
 function Pagination({ itemsPerPage, totalItems, page, currentPage, setCurrentPage }) {
     const pages = [];
     const [input, setInput] = useState(currentPage)
@@ -20,15 +22,15 @@ function Pagination({ itemsPerPage, totalItems, page, currentPage, setCurrentPag
     }
 
     return (
-        <nav>
-            <ul>
-                <button onClick={prevPage} disabled={currentPage === 1 || currentPage < 1}>{'<'}</button>
+        <nav className={styles.pagContainer}>
+            <ul className={styles.pagUlCont}>
+                <button className={currentPage === 1 || currentPage < 1 ? styles.disabledBtn : styles.pagBtn} onClick={prevPage} disabled={currentPage === 1 || currentPage < 1}>{'<'}</button>
                 {pages && pages.map(number => (
-                    <button /*className={currentPage === number ? styles.activeNumber : styles.desactiveNumber}*/ key={number} onClick={() => page(number)} >
+                    <button className={currentPage === number ? styles.disabledBtn : styles.pagBtn} key={number} onClick={() => page(number)} disabled={currentPage === number}>
                         {number}
                     </button>
                 ))}
-                <button onClick={nextPage} disabled={currentPage === maxPages || currentPage > maxPages}>{'>'}</button>
+                <button className={currentPage === maxPages || currentPage > maxPages ? styles.disabledBtn : styles.pagBtn} onClick={nextPage} disabled={currentPage === maxPages || currentPage > maxPages}>{'>'}</button>
             </ul>
         </nav>
     )
