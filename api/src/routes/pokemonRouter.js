@@ -8,9 +8,6 @@ const {
 
 const pokemonRouter = Router();
 
-//get pokemons?name='...'
-//post pokemons
-
 pokemonRouter.get("/", async (req, res) => {
   const { name } = req.query;
   try {
@@ -51,6 +48,7 @@ pokemonRouter.post("/", async (req, res) => {
     image,
     types,
   } = req.body;
+  // console.log('post', types)
   try {
     const newPokemon = await createPokemon(
       name,
