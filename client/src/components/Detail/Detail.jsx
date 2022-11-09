@@ -33,9 +33,9 @@ function pkID(id) {
 }
 
 function Detail(props) {
-  console.log(props);
+  // console.log(props);
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   const dispatch = useDispatch();
   const history = useHistory();

@@ -11,6 +11,7 @@
     transform: translate(-50%, -50%);
     border-radius: 30px;
     padding: 30px;
+    height: 70vh;
 }
 
 .createTitle {
@@ -32,14 +33,15 @@
     width: auto;
 }
 
-.statsContainer {
+.inputsContainer {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 30px;
-    color: gainsboro
+    color: gainsboro;
+    scale: .9;
 }
 
 .statsColumn {
@@ -86,7 +88,6 @@
     text-decoration: none;
     text-shadow: 0px -1px 0px #2b665e;
 
-    transition: all 0.5s ease 0s;
 }
 
 .btn:hover:enabled {
@@ -97,7 +98,7 @@
 
 .btn:active {
     position: relative;
-    top: 5%;
+    /* top: 5%; */
 }
 
 .inputStyle {
@@ -121,3 +122,54 @@
     border-radius: 5px;
     color: black
 }
+.errors {
+    font-size: 15px;
+    color:firebrick;
+    margin-right: 1vw;
+}
+
+.flexStart {
+    text-align: right;
+    width: 300px;
+}
+
+.createBtn {
+    align-self: center;
+
+}
+ .mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70vh;
+ }
+
+ .typesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+ }
+
+ .typeImg {
+    width: 75;
+    height: 75;
+ }
+
+ .types {
+    margin-top: 4vh;
+ }
+
+ .eachType {
+    display: flex;
+    flex-direction: row-reverse;
+ }
+
+ .typeBtn {
+    color: firebrick;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: #3d4442;
+    text-align: center;
+    font-weight: bolder;
+ }

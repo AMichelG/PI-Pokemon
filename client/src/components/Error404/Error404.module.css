@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.errorBG {
+    background-image: url(https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png);
+    width: 70%;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    padding: 30px;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.errorImg {
+    height: 40vh;
+    width: 17vh;
+    justify-content: center;
+    margin:auto;
+}
+
+.errorText {
+    font-family: 'Righteous', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    color: gainsboro;
+    margin: auto;
+}
+

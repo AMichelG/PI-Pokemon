@@ -2,7 +2,9 @@ const axios = require("axios");
 const { Type, Pokemon } = require("../db.js");
 
 async function getPokemons() {
-  const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=15");
+  const { data } = await axios.get(
+    "https://pokeapi.co/api/v2/pokemon?limit=15"
+  );
   // console.log(data)
   const eachURL = data.results.map((pokemon) => axios.get(pokemon.url));
 
@@ -27,17 +29,17 @@ async function getPokemons() {
         attributes: [],
       },
     },
-    attributes: ["id", "name", "attack", "image", "created"]
+    attributes: ["id", "name", "attack", "image", "created"],
   });
-  console.log(dbPokemonInfo)
-  const dbPokemon = dbPokemonInfo.map(pokemon => ({
+  // console.log(dbPokemonInfo)
+  const dbPokemon = dbPokemonInfo.map((pokemon) => ({
     id: pokemon.id,
     name: pokemon.name,
     attack: pokemon.attack,
     image: pokemon.image,
-    types: pokemon.types.map(type => type.name),
-    created: pokemon.created
-  }))
+    types: pokemon.types.map((type) => type.name),
+    created: pokemon.created,
+  }));
   // console.log(dbPokemon)
 
   return [...apiPokemon, ...dbPokemon];
@@ -45,7 +47,6 @@ async function getPokemons() {
 
 async function getPokemonById(id) {
   if (id.length < 4) {
-
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
     //   console.log(data);
@@ -62,20 +63,19 @@ async function getPokemonById(id) {
       height: data.height,
       weight: data.weight,
       image: data.sprites.other["official-artwork"].front_default,
-      types: data.types.map(type => type.type.name),
+      types: data.types.map((type) => type.type.name),
     };
     return pokemonDetail;
-  }
-  else {
+  } else {
     const data = await Pokemon.findByPk(id, {
       include: {
         model: Type,
         attributes: ["name"],
         though: {
-          attributes: []
-        }
-      }
-    })
+          attributes: [],
+        },
+      },
+    });
 
     const pokemonDetail = {
       id: data.id,
@@ -89,9 +89,9 @@ async function getPokemonById(id) {
       height: data.height,
       weight: data.weight,
       image: data.image,
-      types: data.types.map(type => type.name)
-    }
-    return pokemonDetail
+      types: data.types.map((type) => type.name),
+    };
+    return pokemonDetail;
   }
 }
 
@@ -104,11 +104,11 @@ async function getByNameInDB(name) {
       model: Type,
       attributes: ["name"],
       though: {
-        attributes: []
-      }
-    }
+        attributes: [],
+      },
+    },
   });
-  console.log(data)
+  // console.log(data)
   const pokemonInDb = {
     id: data.id,
     name: data.name,
@@ -121,9 +121,9 @@ async function getByNameInDB(name) {
     height: data.height,
     weight: data.weight,
     image: data.image,
-    types: data.types.map(type => type.name)
-  }
-  return pokemonInDb
+    types: data.types.map((type) => type.name),
+  };
+  return pokemonInDb;
 }
 
 async function getByNameInAPI(name) {
@@ -140,24 +140,22 @@ async function getByNameInAPI(name) {
     };
     return pokemonInApi;
   }
-  return null
+  return null;
 }
-
 
 async function getPokemonByName(name) {
   try {
-    const api = await getByNameInAPI(name)
-    return api
+    const api = await getByNameInAPI(name);
+    return api;
   } catch (error) {
-    const db = await getByNameInDB(name)
-    return db
+    const db = await getByNameInDB(name);
+    return db;
   }
   /*const api = await getByNameInAPI(name)
   if (api.error) {
     
   }
   return api*/
-
 }
 
 async function createPokemon(
@@ -173,21 +171,20 @@ async function createPokemon(
   image,
   types
 ) {
-
   name = name.toLowerCase();
-  console.log(
-    name,
-    hp,
-    attack,
-    specialAttack,
-    defense,
-    specialDefense,
-    speed,
-    height,
-    weight,
-    image,
-    types
-  );
+  // console.log(
+  //   name,
+  //   hp,
+  //   attack,
+  //   specialAttack,
+  //   defense,
+  //   specialDefense,
+  //   speed,
+  //   height,
+  //   weight,
+  //   image,
+  //   types
+  // );
   // console.log(types)
   if (
     !name ||
@@ -219,7 +216,7 @@ async function createPokemon(
   const newPokemonTypes = await Type.findAll({
     where: {
       name: types,
-    }
+    },
   });
   /*
     for (const type of types) {

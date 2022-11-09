@@ -16,6 +16,7 @@ import {
   SORT_BY_HEI,
   SORT_BY_WEI,
   CLEAR_FILTER,
+  FILTER_POKEMON,
 } from "./actionTypes";
 
 import axios from "axios";
@@ -81,7 +82,7 @@ export const newPokemon = (payload) => {
 };
 
 export const filterByType = (payload) => {
-  console.log("log:", payload);
+  // console.log("log:", payload);
   return {
     type: FILTER_BY_TYPE,
     payload,
@@ -89,9 +90,16 @@ export const filterByType = (payload) => {
 };
 
 export const filterBySource = (payload) => {
-  console.log("log:", payload);
+  // console.log("log:", payload);
   return {
     type: FILTER_BY_SOURCE,
+    payload,
+  };
+};
+
+export const filterPokemon = (payload) => {
+  return {
+    type: FILTER_POKEMON,
     payload,
   };
 };

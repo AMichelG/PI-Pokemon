@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .cardGrid {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
@@ -81,4 +83,17 @@
 .filterOption {
     font-size: 12px;
     border-radius: 5px;
+}
+
+.notFoundText {
+    font-family: 'Righteous', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    color: gainsboro;
+    margin: auto;
+}
+
+.notFoundImg {
+    width: 200px;
+    height: max-content;
 }

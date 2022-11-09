@@ -11,6 +11,7 @@ import {
   clearFilter,
   clearDetail,
   sortByName,
+  filterPokemon,
 } from "../../redux/actions";
 
 import Card from "../Card/Card";
@@ -58,14 +59,11 @@ function Home() {
     setCurrentPage(1);
   }
 
-  /*function handleFilters (e) {
-        e.preventDefault
-        switch (filter) {
-            case 'byType':
-                dispatch(filterByType(e.target.value))
-
-        }
-    }*/
+  function handleFilters(e) {
+    e.preventDefault();
+    dispatch(filterPokemon(e.target.value));
+    setCurrentPage(1);
+  }
 
   function handleFilterByType(e) {
     e.preventDefault();
@@ -75,7 +73,7 @@ function Home() {
 
   function handleFilterBySource(e) {
     e.preventDefault();
-    console.log("aqui:", e);
+    // console.log("aqui:", e);
     dispatch(filterBySource(e.target.value));
     setCurrentPage(1);
   }
@@ -101,7 +99,7 @@ function Home() {
     setSorting(e.target.value);
   }
 
-  console.log(pokemon);
+  // console.log(pokemon);
 
   return (
     <>
@@ -122,9 +120,10 @@ function Home() {
             <h3 className={styles.filterNames}>Type:</h3>
             <select
               className={styles.filterSelect}
-              onChange={handleFilterByType}
+              // onChange={handleFilterByType}
+              onChange={handleFilters}
             >
-              <option value="all">Type</option>
+              <option value="allTypes">Type</option>
               {types?.map((type) => (
                 <option key={type.id} value={type.name}>
                   {capitalize(type.name)}
@@ -138,7 +137,8 @@ function Home() {
             <h3 className={styles.filterNames}>Storage:</h3>
             <select
               className={styles.filterSelect}
-              onChange={handleFilterBySource}
+              // onChange={handleFilterBySource}
+              onChange={handleFilters}
             >
               <option value="all">All Pokemon</option>
               <option value="db">DB pokemon</option>
@@ -170,7 +170,14 @@ function Home() {
           {loading ? (
             <Loading />
           ) : !pokemon.length ? (
-            <h2>Not Found</h2>
+            <div>
+              <img
+                className={styles.notFoundImg}
+                src="https://media.giphy.com/avatars/SalgadoDesign/m8aHEdyGEYNE.gif"
+                alt="Pokemon Not Found"
+              />
+              <h1 className={styles.notFoundText}>Pokemon not found</h1>
+            </div>
           ) : (
             currentItems?.map((item) => {
               return (

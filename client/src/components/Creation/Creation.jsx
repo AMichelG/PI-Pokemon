@@ -175,187 +175,236 @@ function Create() {
     <div className={styles.createBG}>
       <p className={styles.createTitle}>Create a new Pokemon</p>
       <form onSubmit={handleSubmit}>
-        <div>
-          <div>
-            <label className={styles.createStat} htmlFor="name">Name: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="text"
-              id="name"
-              name="name"
-              onChange={handleChange}
-              value={formState.name}
-              placeholder="Type a name..."
-            />
-            <br />
-            {errors.name && <p className="errors">{errors.name}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="hp">Hitpoints: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="hp"
-              name="hp"
-              onChange={handleChange}
-              value={formState.hp}
-            />
-            <br />
-            {errors.hp && <p className="errors">{errors.hp}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="attack">Attack: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="attack"
-              name="attack"
-              onChange={handleChange}
-              value={formState.attack}
-            />
-            <br />
-            {errors.attack && <p className="errors">{errors.attack}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="specialAttack">Special Attack: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="specialAttack"
-              name="specialAttack"
-              onChange={handleChange}
-              value={formState.specialAttack}
-            />
-            <br />
-            {errors.specialAttack && (
-              <p className="errors">{errors.specialAttack}</p>
-            )}
-            <br />
-            <label className={styles.createStat} htmlFor="defense">Defense: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="defense"
-              name="defense"
-              onChange={handleChange}
-              value={formState.defense}
-            />
-            <br />
-            {errors.defense && <p className="errors">{errors.defense}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="specialDefense">Special Defense: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="specialDefense"
-              name="specialDefense"
-              onChange={handleChange}
-              value={formState.specialDefense}
-            />
-            <br />
-            {errors.specialDefense && (
-              <p className="errors">{errors.specialDefense}</p>
-            )}
-            <br />
-            <label className={styles.createStat} htmlFor="speed">Speed: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="speed"
-              name="speed"
-              onChange={handleChange}
-              value={formState.speed}
-            />
-            <br />
-            {errors.speed && <p className="errors">{errors.speed}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="height">Height: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="height"
-              name="height"
-              onChange={handleChange}
-              value={formState.height}
-            />
-            <br />
-            {errors.height && <p className="errors">{errors.height}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="weight">Weight: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="number"
-              id="weight"
-              name="weight"
-              onChange={handleChange}
-              value={formState.weight}
-            />
-            <br />
-            {errors.weight && <p className="errors">{errors.weight}</p>}
-            <br />
-            <label className={styles.createStat} htmlFor="image">Image: </label>
-            <br />
-            <input
-              className={styles.inputStyle}
-              type="text"
-              id="image"
-              name="image"
-              onChange={handleChange}
-              value={formState.image}
-              placeholder={'Add an URL for your Pokemon\'s image'}
-            />
-            <br />
-            {errors.image && <p className="errors">{errors.image}</p>}
-          </div>
-
-          <div>
-            <label
-              className={styles.createStat}>Type(s):</label>
-            <select
-              className={styles.inputStyle}
-              onChange={(e) => handleSelect(e)} value="disabled">
-              <option
-                className={styles.inputOption}
-                value="">Select</option>
-              {types.map((t) => (
-                <option
-                  className={styles.inputOption}
-                  key={t.name}
-                  value={t.name}>
-                  {t.name}
+        <div className={styles.mainContainer}>
+          <div className={styles.inputsContainer}>
+            <div className={styles.flexStart}>
+              <label className={styles.createStat} htmlFor="name">
+                Name:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChange}
+                value={formState.name}
+                placeholder="Type a name..."
+              />
+              <br />
+              {errors.name ? (
+                <p className={styles.errors}>{errors.name}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="hp">
+                Hitpoints:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="hp"
+                name="hp"
+                onChange={handleChange}
+                value={formState.hp}
+              />
+              <br />
+              {errors.hp ? (
+                <p className={styles.errors}>{errors.hp}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="attack">
+                Attack:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="attack"
+                name="attack"
+                onChange={handleChange}
+                value={formState.attack}
+              />
+              <br />
+              {errors.attack ? (
+                <p className={styles.errors}>{errors.attack}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="specialAttack">
+                Special Attack:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="specialAttack"
+                name="specialAttack"
+                onChange={handleChange}
+                value={formState.specialAttack}
+              />
+              <br />
+              {errors.specialAttack ? (
+                <p className={styles.errors}>{errors.specialAttack}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="defense">
+                Defense:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="defense"
+                name="defense"
+                onChange={handleChange}
+                value={formState.defense}
+              />
+              <br />
+              {errors.defense ? (
+                <p className={styles.errors}>{errors.defense}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="specialDefense">
+                Special Defense:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="specialDefense"
+                name="specialDefense"
+                onChange={handleChange}
+                value={formState.specialDefense}
+              />
+              <br />
+              {errors.specialDefense ? (
+                <p className={styles.errors}>{errors.specialDefense}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="speed">
+                Speed:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="speed"
+                name="speed"
+                onChange={handleChange}
+                value={formState.speed}
+              />
+              <br />
+              {errors.speed ? (
+                <p className={styles.errors}>{errors.speed}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}{" "}
+            </div>
+            <div className={styles.flexStart}>
+              <label className={styles.createStat} htmlFor="height">
+                Height:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="height"
+                name="height"
+                onChange={handleChange}
+                value={formState.height}
+              />
+              <br />
+              {errors.height ? (
+                <p className={styles.errors}>{errors.height}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}
+              <label className={styles.createStat} htmlFor="weight">
+                Weight:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="number"
+                id="weight"
+                name="weight"
+                onChange={handleChange}
+                value={formState.weight}
+              />
+              <br />
+              {errors.weight ? (
+                <p className={styles.errors}>{errors.weight}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}{" "}
+              <label className={styles.createStat} htmlFor="image">
+                Image:{" "}
+              </label>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                id="image"
+                name="image"
+                onChange={handleChange}
+                value={formState.image}
+                placeholder={"Add an URL for your Pokemon's image"}
+              />
+              <br />
+              {errors.image ? (
+                <p className={styles.errors}>{errors.image}</p>
+              ) : (
+                <p className={styles.errors}>&nbsp;</p>
+              )}{" "}
+              <label className={styles.createStat}>Type(s):</label>
+              <select
+                className={styles.inputStyle}
+                onChange={(e) => handleSelect(e)}
+                value="disabled"
+              >
+                <option className={styles.inputOption} value="">
+                  Select
                 </option>
-              ))}
-            </select>
-            {errors.types && <p>{errors.types}</p>}
-
-            <div>
-              {formState.types.map((el) => (
-                <div key={el}>
-                  <div>
-                    <img src={typeImages[el].url} alt="" />
-                    <p>{el}</p>
-                    <button key={el} onClick={() => handleDelete(el)}>
-                      x
-                    </button>
-                  </div>
+                {types.map((t) => (
+                  <option
+                    className={styles.inputOption}
+                    key={t.name}
+                    value={t.name}
+                  >
+                    {t.name}
+                  </option>
+                ))}
+              </select>
+              {errors.types && <p>{errors.types}</p>}
+              <div className={styles.types}>
+                <div className={styles.typesContainer}>
+                  {formState.types.map((el) => (
+                    <div className={styles.eachType} key={el}>
+                      <button
+                        className={styles.typeBtn}
+                        key={el}
+                        onClick={() => handleDelete(el)}
+                      >
+                        X
+                      </button>
+                      <img
+                        className={styles.typeImg}
+                        src={typeImages[el].url}
+                        alt=""
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
+
+          <button
+            type="submit"
+            className={styles.btn + " " + styles.createBtn}
+            disabled={
+              Object.keys(validate(formState)).length > 0 ? true : false
+            }
+          >
+            Create
+          </button>
         </div>
-        <button
-          type="submit"
-          className={styles.btn}
-          disabled={Object.keys(validate(formState)).length > 0 ? true : false}
-        >
-          Create
-        </button>
       </form>
     </div>
   );

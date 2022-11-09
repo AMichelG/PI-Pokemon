@@ -6,6 +6,7 @@ import Nav from "./components/Nav/Nav";
 import Creation from "./components/Creation/Creation";
 import Detail from "./components/Detail/Detail";
 import Home from "./components/Home/Home";
+import Error404 from "./components/Error404/Error404";
 //importarlos componentes que aparezcan directamente en una ruta
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
 
         <Route path="/home">
           <Home />
+        </Route>
+
+        <Route path="*">
+          <Error404 />
         </Route>
       </Switch>
     </div>
