@@ -6,7 +6,7 @@
 }
 
 .card {
-    position: fixed;
+    position: relative;
     overflow: hidden;
     height: 260px;
     width: 210px;
@@ -17,11 +17,10 @@
     border-radius: 2px;
     opacity: 1;
     margin: 5px;
-    /* margin-top: 5px; */
 }
 
 .cardContainer {
-    margin: auto;
+    padding: 3px;
     background-color: gold;
     height: 270px;
     width: 220px;
