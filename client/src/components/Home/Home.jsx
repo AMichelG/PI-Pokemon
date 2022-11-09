@@ -186,9 +186,7 @@ function Home() {
             })
           )}
         </div>
-        {loading ? (
-          <Loading />
-        ) : (
+        {loading ? null : (
           <div>
             {pokemon.length >= 12 ? (
               <Pagination

@@ -45,6 +45,17 @@
 
 }
 
+.clearBtn:hover {
+    background: linear-gradient(to bottom, #4f5a5a 5%, #323b39 100%);
+    background-color: #313838;
+    color: lightskyblue
+}
+
+.clearBtn:active {
+    position: relative;
+    top: 5%;
+}
+
 .filterNames {
     font-family: 'Righteous', cursive;
     font-size: 20px;

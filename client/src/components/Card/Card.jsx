@@ -31,30 +31,36 @@ function Card({ name, image, types, PokeID }) {
         throw new Error('Some info is missing')
     }
 
+    console.log(PokeID)
+
     const color = typeImages[types[0].color]
 
-    console.log(types)
+    // console.log(types)
     return (<>
-        <div className={styles.cardContainer}>
-            <div className={styles.card + ' ' + styles['type' + color]}>
-                <h3 className={styles.cardName}>{capitalize(name)}</h3>
-                <h3 className={styles.cardId}>{pkID(PokeID)}</h3>
+        <Link to={`/home/${PokeID}`}>
+            <div className={styles.cardContainer}>
+                <div className={styles.card + ' ' + styles['type' + color]}>
+                    <h3 className={styles.cardName}>{capitalize(name)}</h3>
+                    {PokeID.toString().length < 5
+                        ? <h3 className={styles.cardId}>{pkID(PokeID)}</h3>
+                        : null
+                    }
 
-                <Link to={`/home/${PokeID}`}>
                     <img src={image} alt={name} className={styles.cardImg} />
-                </Link>
 
-                <div >
-                    <div className={styles.typesContainer}>
-                        <img src={typeImages[types[0]].url} alt={types[0]} className={styles.logoTypes} />
-                        {types.length === 2
-                            ? <img src={typeImages[types[1]].url} alt={types[1]} className={styles.logoTypes} />
-                            : null
-                        }
+
+                    <div >
+                        <div className={styles.typesContainer}>
+                            <img src={typeImages[types[0]].url} alt={types[0]} className={styles.logoTypes} />
+                            {types.length === 2
+                                ? <img src={typeImages[types[1]].url} alt={types[1]} className={styles.logoTypes} />
+                                : null
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     </>);
 
 }

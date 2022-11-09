@@ -172,13 +172,15 @@ function Create() {
   }
 
   return (
-    <>
+    <div className={styles.createBG}>
+      <p className={styles.createTitle}>Create a new Pokemon</p>
       <form onSubmit={handleSubmit}>
         <div>
           <div>
-            <label htmlFor="name">Name: </label>
+            <label className={styles.createStat} htmlFor="name">Name: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="text"
               id="name"
               name="name"
@@ -189,9 +191,10 @@ function Create() {
             <br />
             {errors.name && <p className="errors">{errors.name}</p>}
             <br />
-            <label htmlFor="hp">Hitpoints: </label>
+            <label className={styles.createStat} htmlFor="hp">Hitpoints: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="hp"
               name="hp"
@@ -201,9 +204,10 @@ function Create() {
             <br />
             {errors.hp && <p className="errors">{errors.hp}</p>}
             <br />
-            <label htmlFor="attack">Attack: </label>
+            <label className={styles.createStat} htmlFor="attack">Attack: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="attack"
               name="attack"
@@ -213,9 +217,10 @@ function Create() {
             <br />
             {errors.attack && <p className="errors">{errors.attack}</p>}
             <br />
-            <label htmlFor="specialAttack">Special Attack: </label>
+            <label className={styles.createStat} htmlFor="specialAttack">Special Attack: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="specialAttack"
               name="specialAttack"
@@ -227,9 +232,10 @@ function Create() {
               <p className="errors">{errors.specialAttack}</p>
             )}
             <br />
-            <label htmlFor="defense">Defense: </label>
+            <label className={styles.createStat} htmlFor="defense">Defense: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="defense"
               name="defense"
@@ -239,9 +245,10 @@ function Create() {
             <br />
             {errors.defense && <p className="errors">{errors.defense}</p>}
             <br />
-            <label htmlFor="specialDefense">Special Defense: </label>
+            <label className={styles.createStat} htmlFor="specialDefense">Special Defense: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="specialDefense"
               name="specialDefense"
@@ -253,9 +260,10 @@ function Create() {
               <p className="errors">{errors.specialDefense}</p>
             )}
             <br />
-            <label htmlFor="speed">Speed: </label>
+            <label className={styles.createStat} htmlFor="speed">Speed: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="speed"
               name="speed"
@@ -265,9 +273,10 @@ function Create() {
             <br />
             {errors.speed && <p className="errors">{errors.speed}</p>}
             <br />
-            <label htmlFor="height">Height: </label>
+            <label className={styles.createStat} htmlFor="height">Height: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="height"
               name="height"
@@ -277,9 +286,10 @@ function Create() {
             <br />
             {errors.height && <p className="errors">{errors.height}</p>}
             <br />
-            <label htmlFor="weight">Weight: </label>
+            <label className={styles.createStat} htmlFor="weight">Weight: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="number"
               id="weight"
               name="weight"
@@ -289,25 +299,35 @@ function Create() {
             <br />
             {errors.weight && <p className="errors">{errors.weight}</p>}
             <br />
-            <label htmlFor="image">Image: </label>
+            <label className={styles.createStat} htmlFor="image">Image: </label>
             <br />
             <input
+              className={styles.inputStyle}
               type="text"
               id="image"
               name="image"
               onChange={handleChange}
               value={formState.image}
+              placeholder={'Add an URL for your Pokemon\'s image'}
             />
             <br />
             {errors.image && <p className="errors">{errors.image}</p>}
           </div>
 
           <div>
-            <label>Type(s):</label>
-            <select onChange={(e) => handleSelect(e)} value="disabled">
-              <option value="">Select</option>
+            <label
+              className={styles.createStat}>Type(s):</label>
+            <select
+              className={styles.inputStyle}
+              onChange={(e) => handleSelect(e)} value="disabled">
+              <option
+                className={styles.inputOption}
+                value="">Select</option>
               {types.map((t) => (
-                <option key={t.name} value={t.name}>
+                <option
+                  className={styles.inputOption}
+                  key={t.name}
+                  value={t.name}>
                   {t.name}
                 </option>
               ))}
@@ -331,12 +351,13 @@ function Create() {
         </div>
         <button
           type="submit"
+          className={styles.btn}
           disabled={Object.keys(validate(formState)).length > 0 ? true : false}
         >
           Create
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
