@@ -81,7 +81,7 @@ export const newPokemon = (payload) => {
   };
 };
 
-export const filterByType = (payload) => {
+/*export const filterByType = (payload) => {
   // console.log("log:", payload);
   return {
     type: FILTER_BY_TYPE,
@@ -95,7 +95,7 @@ export const filterBySource = (payload) => {
     type: FILTER_BY_SOURCE,
     payload,
   };
-};
+};*/
 
 export const filterPokemon = (payload) => {
   return {
@@ -170,6 +170,9 @@ export const sortByWei = (payload) => {
 export const clearFilter = () => {
   return {
     type: CLEAR_FILTER,
-    payload: {},
+    payload: {
+      type: "allTypes",
+      source: "all"
+    },
   };
 };

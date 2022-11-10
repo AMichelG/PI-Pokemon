@@ -16,7 +16,7 @@ function capitalize(str) {
 
 function pkID(id) {
   if (id.length > 4) {
-    return "#" + id;
+    return "#???";
   } else {
     let num = id.toString();
     switch (num.length) {
@@ -44,7 +44,7 @@ function Detail(props) {
   useEffect(() => {
     dispatch(getDetail(id));
     return () => dispatch(clearDetail());
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -80,9 +80,9 @@ function Detail(props) {
                 <p className={styles.stat}>Speed: {detail.speed}</p>
               </div>
               <div>
-                <p className={styles.stat}>Height: {detail.height}</p>
+                <p className={styles.stat}>Height: {detail.height / 10} mts </p>
 
-                <p className={styles.stat}>Weight: {detail.weight}</p>
+                <p className={styles.stat}>Weight: {detail.weight / 10} kgs</p>
 
                 <div className={styles.typesContainer}>
                   <img

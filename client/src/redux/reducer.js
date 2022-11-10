@@ -129,6 +129,10 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             pokemon: filteredPokemon,
           };
+        default:
+          return {
+            ...state
+          };
       }
 
     case SORT_BY_NAME:
@@ -136,7 +140,7 @@ const rootReducer = (state = initialState, action) => {
         action.payload === ""
           ? state.pokemon
           : action.payload === "asc"
-          ? state.pokemon.sort((a, b) => {
+            ? state.pokemon.sort((a, b) => {
               if (a.name > b.name) {
                 return 1;
               }
@@ -145,7 +149,7 @@ const rootReducer = (state = initialState, action) => {
               }
               return 0;
             })
-          : state.pokemon.sort((a, b) => {
+            : state.pokemon.sort((a, b) => {
               if (a.name > b.name) {
                 return -1;
               }
@@ -171,23 +175,23 @@ const rootReducer = (state = initialState, action) => {
       let sortByAttack =
         action.payload === "lowest"
           ? state.pokemon.sort((a, b) => {
-              if (a.attack > b.attack) {
-                return 1;
-              }
-              if (a.attack < b.attack) {
-                return -1;
-              }
-              return 0;
-            })
+            if (a.attack > b.attack) {
+              return 1;
+            }
+            if (a.attack < b.attack) {
+              return -1;
+            }
+            return 0;
+          })
           : state.pokemon.sort((a, b) => {
-              if (a.attack > b.attack) {
-                return -1;
-              }
-              if (a.attack < b.attack) {
-                return 1;
-              }
-              return 0;
-            });
+            if (a.attack > b.attack) {
+              return -1;
+            }
+            if (a.attack < b.attack) {
+              return 1;
+            }
+            return 0;
+          });
       return {
         ...state,
         pokemon: sortByAttack,

@@ -10,7 +10,7 @@ function capitalize(str) {
 
 function pkID(id) {
   if (id.length > 4) {
-    return "#" + id;
+    return "#???";
   } else {
     let num = id.toString();
     switch (num.length) {
@@ -42,9 +42,8 @@ function Card({ name, image, types, PokeID }) {
         <div className={styles.cardContainer}>
           <div className={styles.card + " " + styles["type" + color]}>
             <h3 className={styles.cardName}>{capitalize(name)}</h3>
-            {PokeID.toString().length < 5 ? (
-              <h3 className={styles.cardId}>{pkID(PokeID)}</h3>
-            ) : null}
+
+            <h3 className={styles.cardId}>{pkID(PokeID)}</h3>
 
             <img src={image} alt={name} className={styles.cardImg} />
 

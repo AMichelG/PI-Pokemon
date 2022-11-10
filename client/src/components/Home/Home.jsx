@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getTypes,
   getPokemon,
-  filterBySource,
-  filterByType,
+  /*filterBySource,
+  filterByType,*/
   sortByAtt,
   clearFilter,
-  clearDetail,
+  /*clearDetail,*/
   sortByName,
   filterPokemon,
 } from "../../redux/actions";
@@ -49,7 +48,6 @@ function Home() {
     dispatch(getPokemon());
     dispatch(getTypes());
     return dispatch(clearFilter());
-    //dispatch(clearDetail());
   }, [dispatch]);
 
   function handleClick(e) {
@@ -65,7 +63,7 @@ function Home() {
     setCurrentPage(1);
   }
 
-  function handleFilterByType(e) {
+  /*function handleFilterByType(e) {
     e.preventDefault();
     dispatch(filterByType(e.target.value));
     setCurrentPage(1);
@@ -76,7 +74,7 @@ function Home() {
     // console.log("aqui:", e);
     dispatch(filterBySource(e.target.value));
     setCurrentPage(1);
-  }
+  }*/
 
   /*function handleSortByStat (e) {
         switch (stat) {
@@ -115,6 +113,16 @@ function Home() {
             </select>
           </div>
 
+          {/*Ordenamiento por ataque*/}
+          <div>
+            <h3 className={styles.filterNames}>Attack:</h3>
+            <select className={styles.filterSelect} onChange={handleSortByAtt}>
+              <option value="">Sort by Attack</option>
+              <option value="lowest">Lowest</option>
+              <option value="highest">Highest</option>
+            </select>
+          </div>
+
           {/*Filtro por tipo*/}
           <div>
             <h3 className={styles.filterNames}>Type:</h3>
@@ -123,7 +131,7 @@ function Home() {
               // onChange={handleFilterByType}
               onChange={handleFilters}
             >
-              <option value="allTypes">Type</option>
+              <option value="allTypes">All Types</option>
               {types?.map((type) => (
                 <option key={type.id} value={type.name}>
                   {capitalize(type.name)}
@@ -143,16 +151,6 @@ function Home() {
               <option value="all">All Pokemon</option>
               <option value="db">DB pokemon</option>
               <option value="api">API Pokemon</option>
-            </select>
-          </div>
-
-          {/*Ordenamiento por ataque*/}
-          <div>
-            <h3 className={styles.filterNames}>Attack:</h3>
-            <select className={styles.filterSelect} onChange={handleSortByAtt}>
-              <option value="">Sort by Attack</option>
-              <option value="lowest">Lowest Attack</option>
-              <option value="highest">Highest Attack</option>
             </select>
           </div>
 

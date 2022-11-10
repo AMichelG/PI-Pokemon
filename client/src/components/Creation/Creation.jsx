@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -62,6 +61,7 @@ function Create() {
     //funcion validadora
     dispatch(newPokemon(formState));
     dispatch(clearFilter());
+    alert("Pokemon created successfully!")
     history.push("/home");
   };
 
@@ -159,7 +159,7 @@ function Create() {
 
     if (
       formState.image.length > 0 &&
-      !formState.image.match(/([^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi)
+      !formState.image.match(/([^\s.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/gi)
     ) {
       errors.image = "Must be a valid URL";
     }
